@@ -1,2 +1,2 @@
-# EPluseParser
+# EPlusParser
 EnergyPlus data analysis.
