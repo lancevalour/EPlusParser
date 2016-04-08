@@ -13,7 +13,6 @@ def parse_time_dict(time_dict):
     return formatted_dict
 
 
-
 screen_size = 30
 
 time_dict = OrderedDict()
