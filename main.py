@@ -1,36 +1,28 @@
 from collections import OrderedDict
 import datetime
 
+screen_size = 30
+
 
 def parse_time_dict(time_dict):
     formatted_dict = OrderedDict()
     for i in range(len(time_dict.keys())):
-        times = str(time_dict.keys()[i]).split(":")
-        time = datetime.time(int(times[0]), int(times[1]), int(times[2]))
-        print(time)
+        cur_times = str(time_dict.keys()[i]).split(":")
 
-    formatted_dict[0] = 100
+        formatted_hour = cur_times[0]
+        formatted_min = (int(cur_times[1]) / screen_size) * screen_size
+        formatted_sec = cur_times[2]
+
+        formatted_time = formatted_hour + ":" + str(formatted_min) + ":" + formatted_sec
+        print(formatted_time)
+        if formatted_time in formatted_dict:
+            pre_times = str(time_dict.keys()[i - 1]).split(":")
+            formatted_dict[formatted_time] += (int(cur_times[1]) - int(pre_times[1])) * time_dict[time_dict.keys()[i]]
+        else:
+            formatted_dict[formatted_time] = time_dict[time_dict.keys()[i]] * (int(cur_times[1]) - formatted_min)
+        # time = datetime.time(int(cur_times[0]), cur_times(cur_times[1]), int(cur_times[2]))
+        # print(time)
+
     return formatted_dict
 
-
-screen_size = 30
-
-time_dict = OrderedDict()
-
-time_dict["6:58:00"] = 100
-time_dict["7:01:00"] = 100
-time_dict["7:14:00"] = 200
-time_dict["7:20:00"] = 300
-time_dict["7:25:00"] = 50
-time_dict["7:29:00"] = 30
-time_dict["7:32:00"] = 150
-time_dict["7:40:00"] = 100
-time_dict["7:47:00"] = 500
-time_dict["7:55:00"] = 200
-time_dict["8:00:00"] = 100
-time_dict["8:15:00"] = 240
-time_dict["8:30:00"] = 40
-
-
-print(parse_time_dict(time_dict))
 
