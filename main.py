@@ -17,11 +17,20 @@ def parse_time_dict(time_dict):
         print(formatted_time)
         if formatted_time in formatted_dict:
             pre_times = str(time_dict.keys()[i - 1]).split(":")
-            formatted_dict[formatted_time] += (int(cur_times[1]) - int(pre_times[1])) * time_dict[time_dict.keys()[i]]
+            formatted_dict[formatted_time] += (int(cur_times[1]) - int(pre_times[1]))\
+                                              * time_dict[time_dict.keys()[i - 1]]
         else:
             formatted_dict[formatted_time] = time_dict[time_dict.keys()[i]] * (int(cur_times[1]) - formatted_min)
-        # time = datetime.time(int(cur_times[0]), cur_times(cur_times[1]), int(cur_times[2]))
-        # print(time)
+            print(formatted_dict.keys().index(formatted_time))
+            if formatted_dict.keys().index(formatted_time) != 0:
+                pre_times = str(time_dict.keys()[i - 1]).split(":")
+                upper_gap = (int(pre_times[1]) / screen_size + 1) * screen_size - int(pre_times[1])
+                print("upper gap " + str(upper_gap))
+                formatted_dict[formatted_dict.keys()[formatted_dict.keys().index(formatted_time) - 1]] += \
+                    upper_gap * time_dict[time_dict.keys()[i]]
+                # formatted_dict[formatted_dict.keys().index(formatted_time) - 1] += upper_gap *
+            # time = datetime.time(int(cur_times[0]), cur_times(cur_times[1]), int(cur_times[2]))
+            # print(time)
 
     return formatted_dict
 
@@ -46,4 +55,3 @@ time_dict["8:33:00"] = 1
 print(time_dict)
 
 print(parse_time_dict(time_dict).items())
-
