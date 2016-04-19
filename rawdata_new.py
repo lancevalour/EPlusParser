@@ -11,12 +11,9 @@ def parse_time_dict(time_dict):
 
     for i in range(len(time_dict.keys())):  # loop dates
         daily_power = OrderedDict()
-        date_index = time_dict.keys()[i]
-        date_list = []
-        date_list.append(date_index)
 
         for j in range(len(time_dict.values()[i].keys())):# time_dict.values()[0].keys() times in the dict
-            if 
+
             cur_times = str(time_dict.values()[i].keys()[j]).split(":")
             print time_dict.values()[i].values()[j]
 
@@ -57,23 +54,26 @@ def parse_time_dict(time_dict):
                 print formatted_dict
 
                 if formatted_dict.keys().index(formatted_time) != 0:
-                    print formatted_dict.keys().index(formatted_time)
-                    print time_dict.values()[i].keys()[j]
-                    print time_dict.values()[i].keys()[j - 1]
-                    pre_times = str(time_dict.values()[i].keys()[j - 1]).split(":")
-                    upper_gap = (int(pre_times[1]) / screen_size + 1) * screen_size - int(pre_times[1])
-                    print "upper gap" + str(upper_gap)
+                    if j == 0:
+                        pass
+                    else:
+                        print formatted_dict.keys().index(formatted_time)
+                        print time_dict.values()[i].keys()[j]
+                        print time_dict.values()[i].keys()[j - 1]
+                        pre_times = str(time_dict.values()[i].keys()[j - 1]).split(":")
+                        upper_gap = (int(pre_times[1]) / screen_size + 1) * screen_size - int(pre_times[1])
+                        print "upper gap" + str(upper_gap)
 
-                    print formatted_dict.keys()[formatted_dict.keys().index(formatted_time) - 1]
-                    formatted_dict[
-                        formatted_dict.keys()[formatted_dict.keys().index(formatted_time) - 1]] += upper_gap * \
-                                                                                                   time_dict.values()[
-                                                                                                       i].values()[
-                                                                                                       j] / screen_size
-                    # formatted_dict[formatted_dict.keys().index(formatted_time) - 1] += upper_gap *
-                    # time = datetime.time(int(cur_times[0]), cur_times(cur_times[1]), int(cur_times[2]))
-                    # print(time)
-                    print formatted_dict
+                        print formatted_dict.keys()[formatted_dict.keys().index(formatted_time) - 1]
+                        formatted_dict[
+                            formatted_dict.keys()[formatted_dict.keys().index(formatted_time) - 1]] += upper_gap * \
+                                                                                                       time_dict.values()[
+                                                                                                           i].values()[
+                                                                                                           j] / screen_size
+                        # formatted_dict[formatted_dict.keys().index(formatted_time) - 1] += upper_gap *
+                        # time = datetime.time(int(cur_times[0]), cur_times(cur_times[1]), int(cur_times[2]))
+                        # print(time)
+                        print formatted_dict
 
         daily_power[time_dict.keys()[i]] = formatted_dict
         print daily_power
