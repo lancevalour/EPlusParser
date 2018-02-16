@@ -25,4 +25,24 @@ def parse_time_dict(time_dict):
 
     return formatted_dict
 
+time_dict = OrderedDict()
+
+time_dict["6:58:00"] = 1
+time_dict["7:01:00"] = 1
+time_dict["7:14:00"] = 1
+time_dict["7:20:00"] = 1
+time_dict["7:25:00"] = 1
+time_dict["7:29:00"] = 1
+time_dict["7:32:00"] = 1
+time_dict["7:40:00"] = 1
+time_dict["7:47:00"] = 1
+time_dict["7:55:00"] = 1
+time_dict["8:00:00"] = 1
+time_dict["8:15:00"] = 1
+time_dict["8:30:00"] = 1
+time_dict["8:33:00"] = 1
+
+# print(time_dict)
+#
+# print(parse_time_dict(time_dict).items())
 
